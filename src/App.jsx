@@ -1,19 +1,21 @@
-import { useState } from 'react'
 import './App.css'
 import FavProvider from './context/FavContext'
-import Galeria from './components/galeria/Galeria'
-import Favoritos from './components/favoritos/Favoritos'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './views/Home'
+import Fav from './views/Fav'
+import NavBar from './components/navBar/NavBar'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <Router>
       <FavProvider>
-        <Galeria/>
-        <Favoritos/>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/fav" element={<Fav />} />
+        </Routes>
       </FavProvider>
-    </>
+    </Router>
   )
 }
 

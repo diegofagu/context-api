@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FavContext } from "../../context/FavContext";
-import { Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 
 const Favoritos = () => {
 
@@ -8,30 +8,20 @@ const Favoritos = () => {
 
     return(
         <>
-            <h3>Favoritos</h3>
-            <Table striped="columns">
-                <thead>
-                    <tr>
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    <th>Genero</th>
-                    <th>Ocupacion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {fav.map((personaje) => (
-                    <tr key={personaje.Nombre}>
-                        <img src={personaje.Imagen}></img>
-                        <td>{personaje.Nombre}</td>
-                        <td>{personaje.Estado}</td>
-                        <td>{personaje.Genero}</td>
-                        <td>{personaje.Ocupacion}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </Table>
-       </> 
+        <h3>Favoritos</h3>
+       <Container>
+       {fav.map((personaje) => (
+           <div key={personaje.Nombre} className="mb-3" style={{ display: "inline-block" }}>
+               <img
+                   src={personaje.Imagen}
+                   alt={personaje.Nombre}
+                   className="img-fluid mr-2 mb-2"
+               />
+                <button onClick={() => setFav(fav.filter((favPersonaje) => favPersonaje !== personaje))}>fav</button>
+                </div>
+            ))}
+        </Container>
+        </>
     );
 };
 

@@ -27,6 +27,6 @@ const FavProvider = ({ children }) => {
         </FavContext.Provider>
     );
 
-}
+}  
 
 export default FavProvider;
